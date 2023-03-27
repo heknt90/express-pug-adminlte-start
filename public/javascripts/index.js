@@ -35,3 +35,16 @@ const renderGoodList = async (goodsJSON) => {
 }
 
 const goods = fetch('/api/goods').then(renderGoodList)
+
+async function postReq() {
+    await fetch('/api/goods/new', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+         },
+        body: JSON.stringify({
+            name: "Example name",
+            desc: "Example description"
+        })
+    })
+}
