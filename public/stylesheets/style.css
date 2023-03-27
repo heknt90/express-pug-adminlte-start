@@ -1,0 +1,30 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.price {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.price > *:first-child {
+  color: #9d9d9d;
+}
+
+.thumbs {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbs > img {
+  margin: 10px;
+  flex: 0 0 1;
+  width: 100%;
+  max-width: 400px;
+}

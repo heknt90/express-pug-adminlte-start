@@ -1,0 +1,13 @@
+mixin breadcrumbs(path=[])
+    ol.breadcrumb.float-sm-right
+        li(class="breadcrumb-item", class={active: item === path[path.length - 1]})
+            if path.length
+                a(href="#") Home
+            else 
+                | Home
+        each item in path 
+            li(class="breadcrumb-item" class={active: item === path[path.length - 1]}) 
+                if item !== path[path.length - 1]
+                    a(href=item.url)= item.title
+                else 
+                    =item.title 
