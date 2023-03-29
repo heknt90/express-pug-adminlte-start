@@ -1,5 +1,4 @@
-const renderGoodList = async (goodsJSON) => {
-    const goodsData = (await JSON.parse(goodsJSON)).data
+const renderGoodList = (goodsData) => {
     const goodlist = document.createElement("div")
     goodlist.setAttribute("id", "good-list")
     for (let good of goodsData) {
@@ -34,10 +33,8 @@ const renderGoodList = async (goodsJSON) => {
     document.getElementById("goods").innerHTML = goodlist.innerHTML
 }
 
-const goods = fetch('/api/goods').then(renderGoodList)
-
-async function postReq() {
-    await fetch('/api/goods/new', {
+function postReq() {
+    fetch('/api/goods/new', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json;charset=utf-8'
@@ -48,3 +45,9 @@ async function postReq() {
         })
     })
 }
+
+const goods = fetch('/api/goods')
+    .then(responseGoods => responseGoods.json())
+    .then(object => object.data)
+    .then(renderGoodList)
+
