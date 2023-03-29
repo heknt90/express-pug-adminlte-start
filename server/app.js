@@ -5,8 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-const apiRouter = require('./api/api.routes');
-const adminRouter = require('./admin/admin.routes')
+const apiRouter = require('./modules/api/api.routes');
+const adminRouter = require('./modules/admin/admin.routes')
 
 var app = express();
 
