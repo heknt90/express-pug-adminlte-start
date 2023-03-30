@@ -8,12 +8,37 @@ const goodsFilePath = path.resolve(__dirname, '../data/goods.json')
 // GET json goods list 
 function getGoodsController(request, response) {
     fs.readFile(goodsFilePath, "utf-8")
-    .then(async data => await JSON.parse(data))
-    .then(goods => response.json({
-        status: "success",
-        data: goods
-    }))
-    .catch(errorHandler)
+        .then(data => JSON.parse(data))
+        .then(goods => response.json({
+            status: "success",
+            data: goods
+        }))
+        .catch(errorHandler)
+}
+
+// Get json good
+function getGoodController(request, response) {
+    const { goodId } = request.params
+    fs.readFile(goodsFilePath, "utf-8")
+        .then(data => JSON.parse(data))
+        .then(goods => {
+            return goods.find(good => good.id === parseInt(goodId))
+        })
+        .then(good => {
+            if (good) {
+                response.json({
+                    status: "success",
+                    data: good
+                })
+            } else {
+                response.status(404).json({
+                    status: "error",
+                    message: "This is ID dosnt exist"
+                })
+            }
+
+        })
+        .catch(errorHandler)
 }
 
 // CREATE new good
@@ -27,7 +52,7 @@ function createGoodController(request, response) {
             goods.push(newGood)
             return JSON.stringify(goods)
         })
-        .then(newJSON => fs.writeFile(goodsFilePath, "utf-8"))
+        .then(newJSON => fs.writeFile(goodsFilePath, newJSON, "utf-8"))
         .then(() => response.json({
             status: "success"
         }))
@@ -36,5 +61,6 @@ function createGoodController(request, response) {
 
 module.exports = {
     getGoodsController,
+    getGoodController,
     createGoodController
 }

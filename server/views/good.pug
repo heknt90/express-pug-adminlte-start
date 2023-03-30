@@ -1,0 +1,17 @@
+extends layout
+block content
+  -
+    const formatPrice = (price) => new Intl.NumberFormat("ru-RU", {style:"currency", currency: "RUB", maximumFractionDigits: 0, minimumFractionDigits: 0}).format(price)
+    const priceFull = formatPrice(good.price.full)
+    const priceCurrent = formatPrice(good.price.current)
+  h1= good.name 
+  div('data-price'=good.price.current, 'data-oldprice'=good.price.full).price
+    del= priceFull
+    p= priceCurrent
+  p= good.desc 
+  .thumbs
+    each image in good.thumbs
+      img(src=image.url)
+
+//- block scripts
+  //- script(src="javascripts/index-good.js") 
