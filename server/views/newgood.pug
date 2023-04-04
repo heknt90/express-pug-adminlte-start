@@ -1,0 +1,22 @@
+extends layout 
+include mixins/input.mixin.pug
+include mixins/textarea.mixin.pug
+include mixins/button.mixin.pug
+
+block content   
+    h1 Новый товар
+    p.muted Пожалуйста, заполните все поля
+
+    form(method="POST", data-form="validate")#new_good_creation_form
+        +input("name", "text", "Название продукта", "Короткий текст", true)
+        +textarea("desc", "Описание продукта", cols="30", rows="10", "Длинный текст", true) 
+        +input("price-current", "number", "Текущая цена", "Сумма в рублях", true)
+        +input("price-full", "number", "Полная цена", "Сумма в рублях", true)
+        +input("thumb1", "text", "Изображение 1", "Ссылка на изображение (например http//...)", true)
+        +input("thumb2", "text", "Изображение 2", "Ссылка на изображение (например http//...)", true)
+
+        +button("submit", "Сохранить продукт")
+
+
+block scripts 
+    script(src="/javascripts/index-newgood.js")

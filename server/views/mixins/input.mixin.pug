@@ -1,0 +1,5 @@
+mixin input(inputName, inputType, labelText, placeholderText, isRequired=false)
+    label
+            p= labelText
+            p 
+                input(type=inputType, name=inputName, placeholder=placeholderText, required=isRequired)

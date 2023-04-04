@@ -13,39 +13,6 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
             .info
                 a(href="#").d-block Alexander Pierce
 
-        //- //- SIdebar Form
-        //- .form-inline 
-        //-     div(data-widget="sidebar-search").input-group
-        //-         input(type="search", placeholder="Search", aria-label="Search").form-control.form-control-sidebar
-        //-     .input-group-append            
-        //-         button.btn.btn-sidebar
-        //-             i.fas.fa-search.fa-fw
-
-        //- //- Sidebar Menu
-        //- nav.mt-2
-        //-     ul(data-widget="treeview", role="menu", data-accordion="false").nav.nav-pills.nav-sidebar.flex-column 
-        //-         //- Add icons to the links using the .nav-icon class 
-        //-             with font-awesome or any other icon font library 
-        //-         li.nav-item.menu-open
-        //-             a(href="#").nav-link.active
-        //-                 i.nav-icon.fas.fa-tachometer-alt
-        //-             p Starter Pages
-        //-                 i.right.fas.fa-angle-left
-        //-             ul.nav.nav-treeview
-        //-             li.nav-item
-        //-                 a(href="#").nav-link.active
-        //-                     i.far.fa-circle.nav-icon
-        //-                 p Active Page
-        //-             li.nav-item
-        //-                 a(href="#").nav-link
-        //-                     i.far.fa-circle.nav-icon
-        //-                 p Inactive Page
-        //-         li.nav-item
-        //-             a(href="#").nav-link
-        //-             i.nav-icon.fas.fa-th
-        //-             p Simple Link
-        //-                 span.right.badge.badge-danger New
-
         //-  SidebarSearch Form
         .form-inline
             div(data-widget="sidebar-search").input-group 
@@ -63,17 +30,17 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
                     a(href="#").nav-link.active
                         i.nav-icon.fas.fa-tachometer-alt
                         p 
-                            | Starter Pages
+                            | Goods
                             i.right.fas.fa-angle-left
                     ul.nav.nav-treeview
                         li.nav-item
-                            a(href="#").nav-link.active
+                            a(href="/admin/goods").nav-link.active
                                 i.far.fa-circle.nav-icon
-                                p Active Page
+                                p List goods
                         li.nav-item
-                            a(href="#").nav-link
+                            a(href="/admin/goods/create").nav-link
                                 i.far.fa-circle.nav-icon
-                                P Inactive Page
+                                P Create good
                 li.nav-item
                     a(href="#").nav-link
                         i.nav-icon.fas.fa-th

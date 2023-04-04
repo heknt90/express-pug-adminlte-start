@@ -3,9 +3,12 @@ const renderGoodList = (goodsData) => {
     goodlist.setAttribute("id", "good-list")
     for (let good of goodsData) {
         const item = document.createElement("div")
+        const link = document.createElement("a")
+        link.setAttribute("href", `/good/${good.id}`)
         const title = document.createElement("h3")
         title.innerText = good.name
-        item.append(title)
+        link.append(title)
+        item.append(link)
         const price = document.createElement("div")
         price.classList.add("price")
         price.dataset.price = good.price.current 
