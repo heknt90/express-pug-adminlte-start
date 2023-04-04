@@ -2,12 +2,17 @@ extends ../common/main.layout.pug
 
 block content 
     .container-fluid 
-        .row 
+        #goods_list.row
             for good in goodsList
                 .col-12.col-md-6 
                     .card.card-good 
                         .card-body
                             h5.card-title= good.name
                             p.card-text= good.desc
-                            a(href="/good/"+good.id).card-link Open card
-                            //- a(href="#").card-link Another link 
+                            p.text-right
+                                a(href="/good/"+good.id).card-link Open card
+                                a(href="/admin/goods/"+good.id+"/edit").ml-3 Edit
+                                button(type="button", "data-handler"="deleteGoodById", "data-id"=good.id, style="margin-top: -4px;").btn.btn-link.text-danger.border-0.ml-2.py-0
+                                    | Delete 
+block scripts 
+    script(src="/admin/js/pages/goodslist.js") 

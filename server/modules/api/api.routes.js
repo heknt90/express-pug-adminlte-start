@@ -4,7 +4,8 @@ const router = express.Router();
 const { 
     getGoodsController, 
     getGoodController,
-    createGoodController } = require('./controllers/goodsControllers')
+    createGoodController,
+    deleteGoodByIdController } = require('./controllers/goodsControllers')
     
 /* GET goods list json */
 router.get("/goods", getGoodsController)
@@ -14,5 +15,7 @@ router.get("/goods/:goodId", getGoodController)
 
 /* CREATE new good */
 router.post('/goods/new', createGoodController)
+
+router.delete("/goods/:goodId/delete", deleteGoodByIdController)
 
 module.exports = router;
