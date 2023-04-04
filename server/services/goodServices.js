@@ -17,8 +17,15 @@ async function saveGoodsService(goods) {
     return fs.writeFile(goodsFilePath, json, "utf-8")
 }
 
+async function deleteGoodService(goodId) {
+    const goods = await getGoodsService()
+    const newGoods = goods.filter(el => el.id !== goodId)
+    return saveGoodsService(newGoods)
+}
+
 module.exports = { 
     getGoodsService, 
     getGoodService, 
-    saveGoodsService 
+    saveGoodsService,
+    deleteGoodService
 }

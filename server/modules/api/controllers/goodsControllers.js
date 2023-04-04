@@ -1,5 +1,8 @@
-const { getGoodsService, getGoodService, saveGoodsService } = require("../../../services/goodServices")
 const { errorHandler } = require('../../../middlewares/errorHandler')
+const { getGoodsService, 
+        getGoodService, 
+        saveGoodsService,
+        deleteGoodService } = require("../../../services/goodServices")
 
 // GET json goods list 
 function getGoodsController(request, response) {
@@ -13,7 +16,6 @@ function getGoodsController(request, response) {
 
 // Get json good
 function getGoodController(request, response) {
-    console.log("Get good")
     const { goodId } = request.params
     getGoodService(goodId)
         .then(good => {
@@ -60,8 +62,22 @@ function createGoodController(request, response) {
         .catch(errorHandler)
 }
 
+function deleteGoodByIdController(request, response) {
+    const { goodId } = request.params
+    console.log(goodId)
+    deleteGoodService(parseInt(goodId))
+        .then(data => {
+            console.log(data)
+            response.json({
+                status: "success"
+            })
+        })
+        .catch(errorHandler)
+}
+
 module.exports = {
     getGoodsController,
     getGoodController,
-    createGoodController
+    createGoodController,
+    deleteGoodByIdController
 }
