@@ -1,0 +1,13 @@
+extends ../common/main.layout.pug
+
+block content 
+    .container-fluid 
+        .row 
+            for good in goodsList
+                .col-12.col-md-6 
+                    .card.card-good 
+                        .card-body
+                            h5.card-title= good.name
+                            p.card-text= good.desc
+                            a(href="/good/"+good.id).card-link Open card
+                            //- a(href="#").card-link Another link 

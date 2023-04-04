@@ -1,6 +1,5 @@
 include ../mixins/breadcrumbs.mixin.pug
 - const titleText = (title) ? `${title} | ` : "" + 'Admin Panel' 
-- console.log(titleText)
 
 doctype html
 html(lang="ru")
@@ -15,7 +14,6 @@ html(lang="ru")
         link(rel="stylesheet", href="/plugins/fontawesome-free/css/all.min.css")
         //- Theme style
         link(rel="stylesheet", href="/admin/css/adminlte.min.css")
-
         block head
 
     body.hold-transition.sidebar-mini 
@@ -36,15 +34,6 @@ html(lang="ru")
                             .col-sm-6   
                                 breadcrumbs
                                 - 
-                                    //- const breadcrumbsArr = [
-                                    //-     {
-                                    //-         title: "Contacts",
-                                    //-         url: "/contact"
-                                    //-     },
-                                    //-     {
-                                    //-         title: "Company"
-                                    //-     }
-                                    //- ]
                                     const breadcrumbsArr = []
                                 +breadcrumbs(breadcrumbsArr)
                 //- Main content
