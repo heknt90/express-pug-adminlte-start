@@ -14,5 +14,21 @@ block content
                                 a(href="/admin/goods/"+good.id+"/edit").ml-3 Edit
                                 button(type="button", "data-handler"="deleteGoodById", "data-id"=good.id, style="margin-top: -4px;").btn.btn-link.text-danger.border-0.ml-2.py-0
                                     | Delete 
+
+
+    //- Modal
+    #deleteConfirmModal(data-backdrop="true", data-keyboard="false", tabindex="-1", aria-labelledby="staticBackdropLabel", aria-hidden="true").modal.fade 
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h5#staticBackdropLabel.modal-title Подтвердите действие
+                    button(type="button", class="close", data-dismiss="modal", aria-label="Close")
+                    span(aria-hidden="true") &times;
+                .modal-body
+                    | Вы уверены, что хотите удалить данный товар?
+                .modal-footer
+                    button(type="button", class="btn btn-secondary", data-dismiss="modal") Отмена
+                    button(type="button", class="btn btn-danger")#confirmDeleteButton Удалить
+
 block scripts 
     script(src="/admin/js/pages/goodslist.js") 

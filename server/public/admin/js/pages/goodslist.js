@@ -1,10 +1,17 @@
 (function() {
     'use strict'
+
+    var deletingGoodId
     $('#goods_list .card [data-handler="deleteGoodById"]').on("click", deleteHandler)
+    $(confirmDeleteButton).on('click', deleteConfirmHandler)
+    $(deleteConfirmModal).on("hide.bs.modal", () => {
+        deletingGoodId = null
+    })
     
     function deleteHandler(event) {
         event.preventDefault()
-        deleteGoodById($(event.target).attr("data-id"))
+        $(deleteConfirmModal).modal('show')
+        deletingGoodId = $(event.target).attr("data-id")
     }
 
     async function deleteGoodById(id) {
@@ -13,9 +20,9 @@
         })
             .then(r => fetch("/api/goods"))
             .then(g => location.reload())
-            // .then(reponse => response.json())
-            // .then(newGoods => {
-            //     $('#goods_list')
-            // })
+    }
+
+    function deleteConfirmHandler() {
+        deleteGoodById(deletingGoodId)
     }
 })()
