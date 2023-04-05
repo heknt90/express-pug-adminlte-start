@@ -16,7 +16,7 @@ html(lang="ru")
         link(rel="stylesheet", href="/admin/css/adminlte.min.css")
         block head
 
-    body.hold-transition.sidebar-mini 
+    body.hold-transition.sidebar-mini.control-sidebar-push.control-sidebar-push-slide
         .wrapper 
             //- Navbar
             include topMenu.pug
@@ -30,11 +30,8 @@ html(lang="ru")
                     .container-fluid 
                         .row.mb-2 
                             .col-sm-6
-                                h1.m-0= titleText
-                            .col-sm-6   
-                                breadcrumbs
-                                - 
-                                    const breadcrumbsArr = []
+                                h1.m-0= title
+                            .col-sm-6 
                                 +breadcrumbs(breadcrumbsArr)
                 //- Main content
                 .content 
@@ -47,4 +44,6 @@ html(lang="ru")
         script(src="/plugins/jquery/jquery.min.js")
         script(src="/plugins/bootstrap/js/bootstrap.bundle.min.js")
         script(src="/admin/js/adminlte.min.js") 
+        script
+            include admin.common.js
         block scripts

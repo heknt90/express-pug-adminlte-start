@@ -26,24 +26,29 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4
             ul(data-widget="treeview", role="menu", data-accordion="false").nav.nav-pills.nav-sidebar.flex-column 
                 //- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library 
-                li.nav-item.menu-open
-                    a(href="#").nav-link.active
-                        i.nav-icon.fas.fa-tachometer-alt
-                        p 
-                            | Goods
-                            i.right.fas.fa-angle-left
-                    ul.nav.nav-treeview
-                        li.nav-item
-                            a(href="/admin/goods").nav-link.active
-                                i.far.fa-circle.nav-icon
-                                p List goods
-                        li.nav-item
-                            a(href="/admin/goods/create").nav-link
-                                i.far.fa-circle.nav-icon
-                                P Create good
                 li.nav-item
-                    a(href="#").nav-link
-                        i.nav-icon.fas.fa-th
+                    a(href="/admin/goods").nav-link
+                        i.nav-icon.fas.fa-shopping-cart
                         p
-                            | Simple Link
-                            span.right.badge.badge-danger New
+                            | Goods
+                //- li.nav-item.menu-open
+                //-     a(href="#").nav-link.active
+                //-         i.nav-icon.fas.fa-shopping-cart
+                //-         p 
+                //-             | Goods
+                //-             i.right.fas.fa-angle-left
+                //-     ul.nav.nav-treeview
+                //-         li.nav-item
+                //-             a(href="/admin/goods").nav-link.active
+                //-                 i.far.fa-circle.nav-icon
+                //-                 p List goods
+                //-         li.nav-item
+                //-             a(href="/admin/goods/create").nav-link
+                //-                 i.far.fa-circle.nav-icon
+                //-                 P Create good
+                //- li.nav-item
+                //-     a(href="#").nav-link
+                //-         i.nav-icon.fas.fa-th
+                //-         p
+                //-             | Simple Link
+                //-             span.right.badge.badge-danger New

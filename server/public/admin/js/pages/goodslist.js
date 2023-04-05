@@ -18,11 +18,25 @@
         fetch("/api/goods/"+id+"/delete", {
             method: "DELETE",
         })
-            .then(r => fetch("/api/goods"))
-            .then(g => location.reload())
+            .then(_ => fetch("/api/goods"))
+            .then(clearDeleting)
+            .then(_ => {
+                alertSuccessMessage('Удаление товара завершено.')
+                return setTimeout(() => {}, 2000)
+            })
+            .then(_ => location.reload())
+            .catch(err => {
+                clearDeleting()
+                alertErrorMessage('Произоошла ошибка при удалении товара.\n' + err)
+            })
     }
 
     function deleteConfirmHandler() {
         deleteGoodById(deletingGoodId)
+    }
+
+    function clearDeleting() {
+        deletingGoodId = null
+        $(deleteConfirmModal).modal('hide')
     }
 })()

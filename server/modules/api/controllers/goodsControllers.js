@@ -64,10 +64,8 @@ function createGoodController(request, response) {
 
 function deleteGoodByIdController(request, response) {
     const { goodId } = request.params
-    console.log(goodId)
     deleteGoodService(parseInt(goodId))
-        .then(data => {
-            console.log(data)
+    .then(_ => {
             response.json({
                 status: "success"
             })

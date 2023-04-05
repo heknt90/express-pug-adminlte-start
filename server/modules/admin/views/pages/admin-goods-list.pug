@@ -1,20 +1,25 @@
 extends ../common/main.layout.pug
 
 block content 
+    .content-fluid.pb-5
+        .row 
+            .col-12.text-left
+                button(data-widget="control-sidebar", data-controlsidebar-slide="true").btn.bg-info.ml-3
+                    i.fas.fa-plus.mr-2
+                    | Добавить
     .container-fluid 
         #goods_list.row
             for good in goodsList
-                .col-12.col-md-6 
-                    .card.card-good 
+                .col-12.col-sm-6.col-md-3.d-flex
+                    .card.card-good.w-100
                         .card-body
                             h5.card-title= good.name
                             p.card-text= good.desc
-                            p.text-right
-                                a(href="/good/"+good.id).card-link Open card
-                                a(href="/admin/goods/"+good.id+"/edit").ml-3 Edit
-                                button(type="button", "data-handler"="deleteGoodById", "data-id"=good.id, style="margin-top: -4px;").btn.btn-link.text-danger.border-0.ml-2.py-0
-                                    | Delete 
-
+                        .card-footer.bg-white.text-right
+                            a(href="/good/"+good.id).card-link Open card
+                            a(href="/admin/goods/"+good.id+"/edit").card-link.ml-3 Edit
+                            button(type="button", "data-handler"="deleteGoodById", "data-id"=good.id, style="margin-top: -4px;").btn.btn-link.text-danger.border-0.ml-2.py-0
+                                | Delete 
 
     //- Modal
     #deleteConfirmModal(data-backdrop="true", data-keyboard="false", tabindex="-1", aria-labelledby="staticBackdropLabel", aria-hidden="true").modal.fade 
@@ -29,6 +34,35 @@ block content
                 .modal-footer
                     button(type="button", class="btn btn-secondary", data-dismiss="modal") Отмена
                     button(type="button", class="btn btn-danger")#confirmDeleteButton Удалить
+
+block controlsidebar
+    p
+        button(data-widget="control-sidebar", data-controlsidebar-slide="true").btn.btn-link.text-white.p-0
+            i.fas.fa-times
+    h5.mb-3 Добавление нового товара
+
+    form
+        .form-group
+            //- label(for="nameinput") Название продукта
+            input(type="text", name="name", placeholder="Название продукта")#nameinput.form-control
+        .form-group
+            //- label(for="descriptioninput") Описание товара
+            input(type="text", name="desc", placeholder="Описание продукта")#descriptioninput.form-control
+        .form-group
+            //- label(for="currentpriceinput") Текущая цена 
+            input(type="number", name="price-current", placeholder="Текущая цена")#currentpriceinput.form-control
+        .form-group
+            //- label(for="fullpriceinput") Предыдущая цена
+            input(type="number", name="price-full", placeholder="Последняя цена")#fullpriceinput.form-control
+        .form-group
+            //- label(for="thumb1input") Описание товара
+            input(type="text", name="thumb1", placeholder="Изображение")#thumb1input.form-control
+        .form-group
+            //- label(for="thumb2input") Описание товара
+            input(type="text", name="thumb2", placeholder="Изображение")#thumb2input.form-control
+        .pt-3
+            button(type="submit", class="btn btn-primary w-100") Сохранить
+
 
 block scripts 
     script(src="/admin/js/pages/goodslist.js") 

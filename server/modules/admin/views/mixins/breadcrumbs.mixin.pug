@@ -2,7 +2,7 @@ mixin breadcrumbs(path=[])
     ol.breadcrumb.float-sm-right
         li(class="breadcrumb-item", class={active: item === path[path.length - 1]})
             if path.length
-                a(href="#") Home
+                a(href="/admin") Home
             else 
                 | Home
         each item in path 

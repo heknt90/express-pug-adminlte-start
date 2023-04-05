@@ -12,7 +12,10 @@ router.get('/goods', function(req, res, next) {
   getGoodsService()
     .then(goods => res.render('admin-goods-list', {
       title: "Goods list",
-      goodsList: goods
+      goodsList: goods,
+      breadcrumbsArr: [
+        {title: "Goods"}
+      ]
     }))
 })
 
